@@ -13,7 +13,8 @@ Route::get('/request', function (Request $request) {
 });
 
 Route::prefix('subscribe')->group(function () {
-    Route::get('/plans', [SubscribeController::class, 'showPlans']);
+    Route::get('/plans', [SubscribeController::class, 'showPlans'])->name('subscribe.plans');
+    Route::get('/plans/{plan}', [SubscribeController::class, 'checkoutPlan'])->name('subscribe.checkout');
 });
 
 
