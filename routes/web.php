@@ -15,6 +15,8 @@ Route::get('/request', function (Request $request) {
 Route::prefix('subscribe')->group(function () {
     Route::get('/plans', [SubscribeController::class, 'showPlans'])->name('subscribe.plans');
     Route::get('/plans/{plan}', [SubscribeController::class, 'checkoutPlan'])->name('subscribe.checkout');
+    Route::post('/plans/checkout', [SubscribeController::class, 'processCheckout'])->name('subscribe.process');
+    Route::get('/success', [SubscribeController::class, 'showSuccess'])->name('subscribe.success');
 });
 
 

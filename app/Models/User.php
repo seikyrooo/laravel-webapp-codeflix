@@ -47,10 +47,11 @@ class User extends Authenticatable
         ];
     }
 
-    public function memperships(): HasMany {
+    public function memberships(): HasMany {
         return $this->hasMany(Membership::class);
     }
+    
     public function hasMembershipPlan(): bool {
-        return $this->memperships()->where('active', true)->where('end_date', '>', now())->exists();
+        return $this->memberships()->where('active', true)->where('end_date', '>', now())->exists();
     }
 }
