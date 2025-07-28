@@ -50,8 +50,26 @@ class User extends Authenticatable
     public function memberships(): HasMany {
         return $this->hasMany(Membership::class);
     }
-    
+
+    public function devices(): HasMany {
+        return $this->hasMany(UserDevice::class);
+    }
+
     public function hasMembershipPlan(): bool {
         return $this->memberships()->where('active', true)->where('end_date', '>', now())->exists();
+    }
+
+    public function getCurrentPlan()
+    {
+        $activeMembership = $this->memberships()
+            ->where('active', true)
+            ->where('start_date', '<=', now())
+            ->where('end_date', '<=', now())
+            ->latest()
+            ->first();
+
+        if (!$activeMembership) {
+            return null;
+        }
     }
 }
