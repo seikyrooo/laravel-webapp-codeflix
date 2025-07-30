@@ -4,14 +4,14 @@
             Kategori
         </a>
         <div class="dropdown-menu">
-            {{-- @foreach ($categories as $chunk)
+            @foreach ($categories as $chunk)
                 <ul>
                     @foreach ($chunk as $category)
                         <li><a class="dropdown-item"
-                                href="{{ route('categories.show', $category->slug) }}">{{ $category->title }}</a></li>
+                                href="#">{{ $category->title }}</a></li>
                     @endforeach
                 </ul>
-            @endforeach --}}
+            @endforeach
         </div>
     </li>
     <li class="nav-item"><a class="nav-link text-white" href="{{ route('movies.index') }}">Movie</a></li>
