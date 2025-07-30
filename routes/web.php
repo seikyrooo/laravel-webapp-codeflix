@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Http\Request;
@@ -14,9 +15,7 @@ Route::get('/request', function (Request $request) {
     return dd($request->all());
 });
 
-Route::get('/home', function () {
-    return view('movies.index');
-})->middleware('auth', 'check.device.limit')->name('movies.index');
+Route::get('/home', [MovieController::class, 'index'])->middleware('auth', 'check.device.limit')->name('movies.index');
 
 Route::post('/logout', function(Request $request) {
     return app(AuthenticatedSessionController::class)->destroy($request);

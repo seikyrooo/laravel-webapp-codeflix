@@ -29,10 +29,10 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                {{-- @foreach ($latestMovies as $movie)
+                @foreach ($latestMovies as $movie)
                     <div class="swiper-slide">
                         <div class="card">
-                            <a href="{{ route('movies.show', $movie->slug) }}">
+                            <a href="">
                                 <img src="{{ $movie->poster }}" class="img-fluid h-100" alt="...">
                                 <span class="badge rounded-pill text-bg-dark badge-rating">
                                     <img class="star-rating" src="assets/img/star-rating.png" alt="">
@@ -41,7 +41,7 @@
                             </a>
                         </div>
                     </div>
-                @endforeach --}}
+                @endforeach
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
@@ -60,7 +60,7 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                {{-- @foreach ($popularMovies as $movie)
+                @foreach ($popularMovies as $movie)
                     <div class="swiper-slide">
                         <div class="card">
                             <img src="{{ $movie->poster }}" class="img-fluid h-100" alt="...">
@@ -70,7 +70,7 @@
                             </span>
                         </div>
                     </div>
-                @endforeach --}}
+                @endforeach
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
