@@ -16,6 +16,7 @@ Route::get('/request', function (Request $request) {
 });
 
 Route::get('/home', [MovieController::class, 'index'])->middleware('auth', 'check.device.limit')->name('movies.index');
+Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->middleware('auth', 'check.device.limit')->name('movies.show');
 
 Route::post('/logout', function(Request $request) {
     return app(AuthenticatedSessionController::class)->destroy($request);

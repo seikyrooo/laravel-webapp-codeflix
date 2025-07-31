@@ -22,7 +22,7 @@ class Membership extends Model
     ];
 
     public function plan():BelongsTo {
-        return $this->belongsTo(Membership::class);
+        return $this->belongsTo(Plan::class);
     }
 
     public function user():BelongsTo {

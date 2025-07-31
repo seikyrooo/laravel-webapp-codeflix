@@ -22,7 +22,7 @@
             <p class="footer-title">&copy;
                 <script>
                     document.write(new Date().getFullYear());
-                </script> CODEPOLITAN. All rights reserved.
+                </script> Codeflix. All rights reserved.
             </p>
         </div>
     </footer>
