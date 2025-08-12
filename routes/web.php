@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Auth\Events\Authenticated;
@@ -15,8 +16,11 @@ Route::get('/request', function (Request $request) {
     return dd($request->all());
 });
 
-Route::get('/home', [MovieController::class, 'index'])->middleware('auth', 'check.device.limit')->name('movies.index');
+Route::get('/home', [MovieController::class, 'index'])->middleware('auth', 'check.device.limit')->name('home');
+Route::get('/movies', [MovieController::class, 'all'])->name('movies.index');
+Route::get('/movies/search', [MovieController::class, 'search'])->name('movies.search');
 Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->middleware('auth', 'check.device.limit')->name('movies.show');
+Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::post('/logout', function(Request $request) {
     return app(AuthenticatedSessionController::class)->destroy($request);
@@ -28,5 +32,3 @@ Route::prefix('subscribe')->group(function () {
     Route::post('/plans/checkout', [SubscribeController::class, 'processCheckout'])->name('subscribe.process');
     Route::get('/success', [SubscribeController::class, 'showSuccess'])->name('subscribe.success');
 });
-
-
